@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <style>
+        /* General Reset and Body Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f7;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            flex-direction: column;
+            padding-top: 50px;
+        }
+
+        /* Container for Product Grid */
+        .product-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        /* Individual Product Card Styling */
+        .product-item {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid transparent;
+            padding: 20px;
+            cursor: pointer;
+        }
+
+        /* Hover Effect for Product Cards */
+        .product-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border-left: 5px solid #ff5722; /* Orange Border on Hover */
+        }
+
+        /* Product Info Styling */
+        .product-name {
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            text-transform: capitalize;
+            line-height: 1.3;
+        }
+
+        .product-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #00bcd4; /* Cyan Price Color */
+            margin-bottom: 15px;
+        }
+
+        .product-description {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            height: 100px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Styling for the "Buy Now" Button */
+        .buy-button {
+            display: inline-block;
+            width: 100%;
+            padding: 12px;
+            background-color: #4caf50; /* Green Button */
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Hover Effect for Buy Now Button */
+        .buy-button:hover {
+            background-color: #388e3c; /* Darker Green on Hover */
+            transform: scale(1.05);
+        }
+
+        /* Footer Styling */
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #888;
+            font-size: 14px;
+        }
+
+        /* Responsive Design Adjustments */
+        @media (max-width: 768px) {
+            .product-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="product-container">
+        {% for pro in prod %}
+            <div class="product-item">
+                <div class="product-name">{{ pro.name }}</div>
+                <div class="product-price">Rs.{{ pro.price }}</div>
+                <div class="product-description">{{ pro.description }}</div>
+                <a href="#" class="buy-button">Buy Now</a>
+            </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
