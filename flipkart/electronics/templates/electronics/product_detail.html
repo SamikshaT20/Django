@@ -10,13 +10,14 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f4f7;
+            background-color: #f7f9fc;
             display: flex;
             justify-content: center;
             align-items: flex-start;
             min-height: 100vh;
             flex-direction: column;
             padding-top: 50px;
+            color: #333;
         }
 
         /* Container for Product Grid */
@@ -27,6 +28,7 @@
             padding: 20px;
             width: 100%;
             max-width: 1200px;
+            margin-bottom: 30px;
         }
 
         /* Individual Product Card Styling */
@@ -39,6 +41,7 @@
             border-left: 5px solid transparent;
             padding: 20px;
             cursor: pointer;
+            position: relative;
         }
 
         /* Hover Effect for Product Cards */
@@ -96,12 +99,61 @@
             transform: scale(1.05);
         }
 
-        /* Footer Styling */
-        footer {
-            text-align: center;
+        /* Form Container Styling */
+        .form-container {
             margin-top: 30px;
-            color: #888;
-            font-size: 14px;
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Form Inputs Styling */
+        .form-container input[type="text"],
+        .form-container input[type="email"],
+        .form-container input[type="number"] {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            color: #333;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-container input[type="text"]:focus,
+        .form-container input[type="email"]:focus,
+        .form-container input[type="number"]:focus {
+            border-color: #4caf50;
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+            outline: none;
+        }
+
+        /* Styling for Submit Button */
+        .form-container input[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            background-color: #4caf50; /* Green Button */
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #388e3c; /* Darker Green on Hover */
+            transform: scale(1.05);
         }
 
         /* Responsive Design Adjustments */
@@ -116,9 +168,15 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        h1{
+            margin-left: 400px;
+            color: #388e3c;
+        }
     </style>
 </head>
 <body>
+    <h1>Welcome to the electronis store</h1>
     <div class="product-container">
         {% for pro in prod %}
             <div class="product-item">
@@ -128,6 +186,15 @@
                 <a href="#" class="buy-button">Buy Now</a>
             </div>
         {% endfor %}
+    </div>
+    
+    <!-- Form Section -->
+    <div class="form-container">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Add to Cart">
+        </form>
     </div>
 
 </body>
