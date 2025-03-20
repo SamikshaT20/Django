@@ -183,6 +183,13 @@
                 <div class="product-name">{{ pro.name }}</div>
                 <div class="product-price">Rs.{{ pro.price }}</div>
                 <div class="product-description">{{ pro.description }}</div>
+
+                <a href="{% url 'update_product' pro.id%}">
+                <button type="ubutton">Update</bottom> </a>
+
+                <a href="{% url 'delete_product' pro.id%}">
+                <button type="dbutton">Delete</bottom> </a>
+
                 <a href="#" class="buy-button">Buy Now</a>
             </div>
         {% endfor %}
