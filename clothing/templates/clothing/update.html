@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>Update</title>
+    </head>
+    <body>
+        <div>
+            <h1>Update</h1>
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Update Product">
+                <a href="{% url 'home' %}">Back to home</a>
+            </form>
+        </div>
+    </body>
+</html>
